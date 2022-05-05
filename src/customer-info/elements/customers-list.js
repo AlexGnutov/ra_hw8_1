@@ -18,7 +18,6 @@ function CustomersList(props) {
     }, []);
 
     const showDetails = (id) => {
-        console.log('show details ', id);
         if (id === user) {
             setUser(null);
             return;

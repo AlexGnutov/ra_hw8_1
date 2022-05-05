@@ -15,10 +15,7 @@ function CustomersDetails(props) {
             } catch (e) {
                 console.log(e.message);
             }
-            setLoading(false);
         }
-
-        // calling async
         if (id) {
             setLoading(true);
             fetchData();
@@ -26,6 +23,10 @@ function CustomersDetails(props) {
             setData(null);
         }
     }, [id]);
+
+    const onImageLoad = () => {
+        setLoading(false);
+    }
 
     return (
         <>
@@ -36,7 +37,7 @@ function CustomersDetails(props) {
             {data ?
                 <>
                     <img key={data.id} src={data['avatar']} alt={''}
-                         className={'customer-details-image'}/>
+                         className={'customer-details-image'} onLoad={onImageLoad}/>
                     <p>{'Name: ' + data.name}</p>
                     <p>{'City: ' + data.details.city}</p>
                     <p>{'Company: ' + data.details.company}</p>
